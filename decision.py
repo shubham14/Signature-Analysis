@@ -20,8 +20,11 @@ from AE import *
 
 class Decision():
     
-    def __init__(self):
-        pass
+    # One Class SVM parameter intialization
+    def __init__(self, nu, kernel, gamma):
+        self.nu = nu
+        self.kernel = kernel
+        self.gamma = gamma
     
     def fit_model(self):
         
