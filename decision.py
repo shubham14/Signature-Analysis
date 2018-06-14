@@ -31,19 +31,22 @@ class Decision():
         self.base_vec = base_vec
         self.labels_train = labels_train
         self.labels_test = labels_test
+        self.clf = svm.OneClassSVM(nu=self.nu, kernel=self.kernel, gamma=self.gamma)
     
     def MSE(self):
         X_train = []
+        data = data_load.data_process()
+        X_tr, _ = model.build_model()
         for batch in batch_size:
             
     
     # train the One-Class SVM for a specific signature
     def fit_model(self):
-        clf = svm.OneClassSVM(nu=self.nu, kernel=self.kernel, gamma=self.gamma)
         X_train = self.MSE()
         Y_train = self.labels
-        clf.fit(X_train, Y_train)
+        self.clf.fit(X_train, Y_train)
         
     def predict(self):
+        clf = self.clf()
         
         
